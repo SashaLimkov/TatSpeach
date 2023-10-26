@@ -10,7 +10,8 @@ async def select_language():
     keyboard = await get_base_keyboard(
         keyboard_options={
             "row_width": 1,
-            "resize_keyboard": True
+            "resize_keyboard": True,
+            "one_time_keyboard":True
         },
         is_inline=False
     )

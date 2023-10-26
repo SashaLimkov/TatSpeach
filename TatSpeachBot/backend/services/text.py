@@ -1,7 +1,8 @@
 from backend.models import Translate, Language, Text
 
 def get_text_by_language_and_key(lang:Language, key:str)->Translate:
-    return Translate.objects.filter(key=key, language=lang).first().translate
+    text_key = Text.objects.filter(key=key).first()
+    return Translate.objects.filter(text_key=text_key, language=lang).first().translate
 
 
 def get_default_language():
@@ -9,3 +10,7 @@ def get_default_language():
 
 def get_all_languages():
     return Language.objects.all()
+
+
+def get_language_by_name(lang_name:str)->Language:
+    return Language.objects.filter(name=lang_name).first()

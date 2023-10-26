@@ -10,7 +10,7 @@ from bot.utils.deleter import try_delete_message
 
 
 async def try_edit_message(
-    message, user_id, text, main_message_id, keyboard, state: FSMContext
+    user_id, text, main_message_id, keyboard, state: FSMContext
 ):
     """
     Функция, которая пытается обновить любое текстовое сообщение по main_message_id.

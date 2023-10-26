@@ -1,5 +1,5 @@
-from TatSpeachBot.backend.models import Language
-from TatSpeachBot.backend.services.text import get_text_by_language_and_key
+from backend.models import Language
+from backend.services.text import get_text_by_language_and_key
 
 
 def get_text(key:str, lang:Language):

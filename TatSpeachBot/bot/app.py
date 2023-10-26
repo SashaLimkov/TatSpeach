@@ -1,7 +1,7 @@
 from aiogram import Dispatcher
 from aiogram.utils import executor
 
-from .config.loader import dp, scheduler
+from .config.loader import dp
 from . import filters, handlers
 
 import os
@@ -19,7 +19,6 @@ def run_bot():
     """Запускает процессы бота"""
     _setup_django()
     print("Bot started")
-    scheduler.start()
     executor.start_polling(
         dp, on_startup=_on_startup, on_shutdown=_on_shutdown, skip_updates=False
     )

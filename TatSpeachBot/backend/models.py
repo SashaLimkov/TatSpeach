@@ -14,7 +14,7 @@ class TelegramUser(models.Model):
         verbose_name_plural = "Пользователи"
 
     def __str__(self) -> str:
-        return self.name
+        return self.full_name
 
 class Language(models.Model):
     name = models.CharField(max_length=128)
@@ -37,7 +37,7 @@ class Text(models.Model):
         return self.key
 
 class Translate(models.Model):
-    key = models.ForeignKey(Text, on_delete=models.CASCADE, related_name="all_translates")
+    text_key = models.ForeignKey(Text, on_delete=models.CASCADE, related_name="all_translates")
     language = models.ForeignKey(Language, on_delete=models.CASCADE, related_name="all_text")
     translate = models.TextField(max_length=2048, verbose_name="Текст")
     

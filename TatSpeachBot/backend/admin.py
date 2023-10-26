@@ -8,15 +8,15 @@ class TelegramUserAdmin(admin.ModelAdmin):
 
 
 class TranslatesAdmin(admin.ModelAdmin):
-    list_display = ("key", "language", "translate")
+    list_display = ("text_key", "language", "translate")
     list_display_links = ("translate", )
-    raw_id_fields = ("key", "language")
+    raw_id_fields = ("text_key", "language")
     search_fields = ("Translate",)
     list_filter = ("language",)
 
 class TranslatesInline(admin.StackedInline):
     model = Translate
-    fields = ["key", "language", "translate"]
+    fields = ["text_key", "language", "translate"]
     show_change_link = True
     extra = 0
 
