@@ -9,6 +9,7 @@ from bot.data import text_data as td
 from backend.services import text as ts
 from backend.services import telegram_user as tus
 from bot.keyboards import reply as rk
+from bot.keyboards import inline as ik
 from bot.utils import message_worker as mw
 from bot.utils.deleter import try_delete_message
 
@@ -64,7 +65,7 @@ async def main_menu(message: types.Message, state: FSMContext):
     await mw.try_edit_message(
         user_id=telegram_id,
         text=get_text(key=td.MAIN_MENU, lang=user.selected_language),
-        keyboard=None,
+        keyboard=await ik.select_action(telegram_id=telegram_id),
         state=state,
         main_message_id=main_message_id,
     )

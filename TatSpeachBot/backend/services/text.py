@@ -1,6 +1,7 @@
 from backend.models import Translate, Language, Text
 
 def get_text_by_language_and_key(lang:Language, key:str)->Translate:
+    print(key)
     text_key = Text.objects.filter(key=key).first()
     return Translate.objects.filter(text_key=text_key, language=lang).first().translate
 

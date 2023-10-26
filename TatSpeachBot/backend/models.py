@@ -46,5 +46,5 @@ class Translate(models.Model):
         verbose_name_plural = "Тексты на языках"
 
     def __str__(self) -> str:
-        return f"{self.key.key}: {self.translate}"
+        return f"{self.text_key.key}: {self.translate}"
 
