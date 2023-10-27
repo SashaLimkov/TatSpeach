@@ -56,12 +56,17 @@ async def set_language(message: types.Message, state: FSMContext):
 async def old_user(message: types.Message, state: FSMContext):
     await main_menu(message=message, state=state)
 
-async def main_menu(message: types.Message, state: FSMContext):
+async def back_to_mm(call: types.CallbackQuery, state: FSMContext):
+    await main_menu(message=call.message, state=state, back=True)
+
+async def main_menu(message: types.Message, state: FSMContext, back:bool = False):
     telegram_id = message.chat.id
-    await message.delete()
+    if not back:
+        await message.delete()
     user = tus.get_profile_by_telegram_id(telegram_id=telegram_id)
     data = await state.get_data()
     main_message_id = data.get("main_message_id", None)
+    await MainMenuState.MM.set()
     await mw.try_edit_message(
         user_id=telegram_id,
         text=get_text(key=td.MAIN_MENU, lang=user.selected_language),

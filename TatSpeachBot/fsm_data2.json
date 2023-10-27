@@ -5,9 +5,10 @@
             "data": {
                 "mes_to_del": [
                     19984,
-                    19991
+                    19991,
+                    20013
                 ],
-                "main_message_id": 19996
+                "main_message_id": 20049
             },
             "bucket": {}
         }

@@ -7,7 +7,8 @@ from bot.data import text_data as td
 
 
 __all__ = [
-    "select_action"
+    "select_action",
+    "back_to_mm"
 ]
 
 async def select_action(telegram_id):
@@ -22,7 +23,22 @@ async def select_action(telegram_id):
         keyboard.add(
             await get_inline_button(
                 text=get_text(key=text, lang=user.selected_language), 
-                cd=text
+                cd="splitter|"+text
             )
         )
+    return keyboard
+
+async def back_to_mm(telegram_id):
+    keyboard = await get_base_keyboard(
+        keyboard_options={
+            "row_width": 1,
+        },
+    )
+    user = tus.get_profile_by_telegram_id(telegram_id=telegram_id)
+    keyboard.add(
+        await get_inline_button(
+            text=get_text(key=td.BACK, lang=user.selected_language),
+            cd=td.BACK
+        )
+    )
     return keyboard

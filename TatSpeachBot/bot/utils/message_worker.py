@@ -172,7 +172,6 @@ async def dry_message_editor(text, keyboard, state, message):
     main_message_id = data.get("main_message_id", False)
     telegram_id = message.chat.id
     await try_edit_message(
-        message=message,
         main_message_id=main_message_id,
         user_id=telegram_id,
         text=text,
